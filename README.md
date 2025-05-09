@@ -1,121 +1,123 @@
-# Syriatel Telecom Customer Churn Prediction: A Data-Driven Approach to Customer Retention  
 
-## Overview  
-This project leverages machine learning to predict and prevent customer churn for Syriatel Telecom. By analyzing customer behavior patterns, we identify at-risk customers and recommend targeted retention strategies.
+# **Predicting and Preventing Customer Churn at Syriatel**  
+*A Data-Driven Approach to Customer Retention*
 
-## Business Context  
+## **Overview**
 
-### The Challenge of Customer Churn  
-- 📉 **Revenue Impact:** Churn directly affects profitability  
-- 🔍 **Prediction Need:** Early identification of at-risk customers  
-- 🎯 **Retention Goal:** Reduce churn by 15-30% through data-driven interventions  
+Customer churn poses a critical challenge for Syriatel, directly affecting both revenue and customer loyalty. This project leverages data science techniques to predict churn and recommend strategies for targeted customer retention. By identifying at-risk customers early, Syriatel can take proactive steps to minimize churn and strengthen customer relationships.
 
-### Stakeholder Analysis  
-| Role | Interest | Benefit |
-|------|----------|---------|
-| **Executives** | Strategic planning | Improved customer lifetime value |
-| **Marketing** | Campaign targeting | Higher retention campaign ROI |
-| **Customer Service** | At-risk customer handling | More effective interventions |
-| **Data Team** | Model deployment | Framework for future ML projects |
+---
 
-## Data & Methodology  
+## **Business Problem and Stakeholders**
 
-### Dataset Overview (`syriatel_churn.csv`)  
-**Key Features:**  
-- **Demographics:** Customer age, location, tenure  
-- **Usage Metrics:** Call minutes, data usage, international calls  
-- **Service Attributes:** Contract type, voicemail, service calls  
-- **Target Variable:** Churn status (True/False)  
+### **Business Problem**
 
-```mermaid
-graph LR
-    A[Raw Data] --> B[Data Cleaning]
-    B --> C[Feature Engineering]
-    C --> D[Model Training]
-    D --> E[Performance Evaluation]
-    E --> F[Strategy Recommendations]
+The main business objective is to predict customer churn so Syriatel can:
 
+- Implement timely and personalized retention strategies.
+- Minimize revenue losses due to customer departures.
+- Maximize the return on customer acquisition and service costs.
 
-Technical Implementation
-Model Comparison
-Algorithm	Accuracy	Recall	Precision	Training Time
-Logistic Regression	89.2%	58.4%	72.1%	0.8s
-Random Forest	92.1%	63.8%	76.5%	4.2s
-SVM	90.7%	61.2%	74.3%	12.5s
-Decision Tree	92.5%	65.3%	75.8%	1.1s
-Top Churn Drivers
+Accurately identifying potential churners allows for strategic intervention, helping to reduce the long-term churn rate.
 
-    High Daytime Usage (23% impact)
+### **Key Stakeholders**
 
-        Customers using >300 mins/day 3x more likely to churn
+- **Customer Retention Team:** Uses predictions to guide personalized outreach strategies.
+- **Marketing & Customer Service Teams:** Implements customized offers and support based on churn signals.
+- **Syriatel Management:** Informs strategic decisions to reduce churn and improve customer satisfaction.
+- **Data Science & Analytics Teams:** Continuously improve the model and extract actionable insights.
 
-    Frequent Service Calls (19% impact)
+---
 
-        4+ calls/month = 68% churn probability
+## **Dataset and Methodology**
 
-    Month-to-Month Contracts (17% impact)
+### **Dataset Description**
 
-        42% churn rate vs 11% for annual contracts
-```
+The analysis uses a dataset (`syriatel_churn.csv`) comprising:
 
-Retention Strategies
-Targeted Interventions
+- **Customer demographics**
+- **Service usage patterns**
+- **Subscription details**
+- **Customer service interactions**
+- **Churn status (target variable)**
 
-    🚨 High-Risk Customers (Top 5% Prediction Score):
+This dataset is ideal for modeling churn as it includes meaningful predictors of customer behavior.
 
-        Personal account manager
+### **Modeling Techniques**
 
-        Customized retention offers
+The project experimented with various machine learning models, ultimately emphasizing a **Decision Tree** model for interpretability and recall. Additional models explored:
 
-    📞 Frequent Service Callers:
+- **Logistic Regression**
+- **Random Forest**
+- **Support Vector Machine (SVM)**
 
-        Proactive quality assurance checks
+### **Preprocessing and Feature Engineering**
 
-        Dedicated support line
+- **Handling missing values**
+- **One-hot encoding of categorical features**
+- **Feature scaling (standardization)**
+- **Exploratory data analysis to uncover trends and outliers**
 
-    💳 Contract Optimization:
+---
 
-        15% discount for annual commitment
+## **Key Findings – Drivers of Churn**
 
-        Free month for 2-year signups
+Top features influencing churn:
 
+- **Total Day Minutes:** High daily usage correlates with higher churn probability.
+- **Customer Service Calls:** More frequent calls often indicate dissatisfaction.
+- **Contract Type:** Month-to-month contracts show higher churn rates.
+- **International Plan:** Customers with this plan are more likely to churn.
+- **Voicemail Plan:** Absence of this service is linked to increased churn risk.
 
-gantt
-    title Retention Program Rollout
-    dateFormat  YYYY-MM-DD
-    section Phase 1
-    Model Deployment       :2023-11-01, 14d
-    Team Training          :2023-11-15, 7d
-    section Phase 2
-    Pilot Campaigns        :2023-12-01, 21d
-    Feedback Analysis      :2023-12-22, 14d
-    section Phase 3
-    Full Implementation    :2024-01-15, 30d
+These features provide critical insights into churn behavior and are central to effective retention strategies.
 
+---
 
-Next Steps & Future Work
+## **Model Evaluation and Predictive Power**
 
-    Enhanced Data Collection:
+- **Recall:** 65.31% – effectively identifies the majority of churners (prioritized over precision).
+- **Accuracy:** 92.51% – overall correctness of model predictions.
 
-        Add customer satisfaction survey data
+### **Performance Metrics Used**
 
-        Incorporate app usage metrics
+- **Precision**
+- **Recall**
+- **F1-score**
+- **AUC-ROC**
 
-    Model Improvements:
+The **Random Forest** model was optimized using **RandomizedSearchCV**, but the **Decision Tree** was selected for final deployment due to its interpretability and solid performance in recall.
 
-        Test XGBoost and Neural Networks
+---
 
-        Implement real-time prediction API
+## **Retention Strategies Based on Insights**
 
-    Business Integration:
+### **Targeted Interventions**
 
-        Dashboard for customer service team
+- **High Usage Customers:** Offer customized data or call plans to add value.
+- **Customer Service Issues:** Prioritize follow-ups and support for frequently calling customers.
+- **Month-to-Month Contracts:** Introduce incentives for switching to long-term plans.
+- **International Plan Holders:** Design better international packages or loyalty programs.
+- **Voicemail Plan Non-Users:** Educate users on the value of voicemail and offer free trials.
 
-        Automated alert system for high-risk customers
+### **Personalized Approach**
 
-Conclusion
+Use model outputs to design customer-specific offers and engagement plans, improving overall retention and satisfaction.
 
-This solution provides Syriatel with:
-✅ Predictive Power: 92.5% accurate churn identification
-✅ Actionable Insights: Clear drivers and intervention points
-✅ Implementation Roadmap: Phased rollout plan
+---
+
+## **Conclusion and Next Steps**
+
+### **Impact**
+
+- Delivers a **high-recall model** for effective churn prediction.
+- Provides **actionable insights** for designing personalized retention campaigns.
+- Enhances **strategic decision-making** with data-backed evidence.
+
+### **Next Steps**
+
+- **Model Improvement:** Explore ensemble methods and advanced feature engineering.
+- **Performance Monitoring:** Set up dashboards and monitoring systems to track real-time churn predictions.
+- **Cross-Team Collaboration:** Engage stakeholders across departments for cohesive implementation of strategies.
+
+---
